@@ -13,6 +13,8 @@ df_reviews = pd.read_csv(r'C:\Users\Karahan C\Desktop\Portfolio Projects\MARKETI
 
 df_merged = pd.merge(df_customerJourney, df_product, on='ProductID', how='left')
 
+
+# Average Order Value calculated 
 total_transaction = (df_merged[df_merged['Action'] == 'Purchase']['Price'].sum())
 transaction_count = (df_merged[df_merged['Action'] == 'Purchase']['Price'].count())
 AOV = (total_transaction / transaction_count)
