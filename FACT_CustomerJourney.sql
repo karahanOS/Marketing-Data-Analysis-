@@ -1,9 +1,10 @@
+-- Data observed
 SELECT 
   * 
 FROM 
   [PortfolioProject_MarketingAnalytics].[dbo].[customer_journey] 
   
-  -------------------------------
+  -- In this part of code verified that there are duplicated rows in the data
 
 SELECT 
   [JourneyID], 
@@ -27,7 +28,7 @@ GROUP BY
 HAVING 
   COUNT(*)> 1;
 
----------------------------------
+-- with CTE dropped duplicated rows and avg_duration evaluated for each uniqe date 
 
 WITH CleanedTable AS (
   Select 
@@ -37,7 +38,8 @@ WITH CleanedTable AS (
     customer_journey
 ) 
 
-----------------------------------
+-- Cleaned table obtained
+-- Null data replaced with average duration of its data using COALESCE function
 
 SELECT 
   JourneyID, 
